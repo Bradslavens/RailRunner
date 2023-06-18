@@ -6,37 +6,64 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public List<Transform> targets = new List<Transform>();
-    private int currentTargetIndex = 0;
+    private int currentTargetIndex = 1;
 
     // Speed at which the player moves to the target
     public float speed = 1f;
 
-    // Update is called once per frame
-    void Update()
+    private PlayerAction playerAction;
+
+    void Awake()
     {
-        if (targets.Count > 0)
-        {
-            transform.position = Vector3.MoveTowards(transform.position,
-                new Vector3(targets[currentTargetIndex].position.x, transform.position.y, transform.position.z),
-                speed * Time.deltaTime);
-        }
+        // Initialize your input actions
+        playerAction = new PlayerAction();
+        playerAction.Movement.MoveLeft.performed += ctx => MoveLeft();
+        playerAction.Movement.MoveRight.performed += ctx => MoveRight();
+
     }
+
+    private void Start()
+    {
+        Vector3 npos = new Vector3(targets[currentTargetIndex].position.x, transform.position.y, transform.position.z);
+        transform.position = npos;
+    }
+
 
     // You can call this function when you click your left button
     public void MoveLeft()
     {
-        if (currentTargetIndex > 0) // check if there's a target to the left
+        Debug.Log("move1 left");
+
+        if(currentTargetIndex > 0)
         {
             currentTargetIndex--;
+            Debug.Log(currentTargetIndex);
+            Vector3 npos = new Vector3(targets[currentTargetIndex].position.x, transform.position.y, transform.position.z);
+            transform.position = npos;
         }
     }
 
     // You can call this function when you click your right button
     public void MoveRight()
     {
+        Debug.Log("move right");
+
         if (currentTargetIndex < targets.Count - 1) // check if there's a target to the right
         {
             currentTargetIndex++;
+            Debug.Log(currentTargetIndex);
+            Vector3 npos = new Vector3(targets[currentTargetIndex].position.x, transform.position.y, transform.position.z);
+            transform.position = npos;
         }
+    }
+
+    private void OnEnable()
+    {
+        playerAction.Movement.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerAction.Movement.Disable();
     }
 }
