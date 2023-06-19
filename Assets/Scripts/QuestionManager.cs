@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class QuestionManager : MonoBehaviour
@@ -15,7 +16,11 @@ public class QuestionManager : MonoBehaviour
         {
             Debug.Log("The answer to the next question is: " + nextAnswer);
             correctObject =  randomObjectSelector.GetRandomObject();
-            Debug.Log("the new answer is " + ReplaceLastTwoCharacters(nextAnswer));
+
+            // assign the next answer to the correct object 
+            correctObject.transform.GetChild(1).GetComponent<TextMeshPro>().text = nextAnswer;
+            Debug.Log(" bb " + correctObject.name);
+            //Debug.Log("the new answer is " + ReplaceLastTwoCharacters(nextAnswer));
             currentQuestionNumber++;
         }
     }
