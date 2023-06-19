@@ -20,6 +20,13 @@ public class QuestionManager : MonoBehaviour
             // assign the next answer to the correct object 
             correctObject.transform.GetChild(1).GetComponent<TextMeshPro>().text = nextAnswer;
             Debug.Log(" bb " + correctObject.name);
+            foreach (GameObject obj in randomObjectSelector.gameObjects) {
+                if(obj != correctObject)
+                {
+                    obj.transform.GetChild(1).GetComponent<TextMeshPro>().text = ReplaceLastTwoCharacters(nextAnswer); ;
+                }
+            
+            }
             //Debug.Log("the new answer is " + ReplaceLastTwoCharacters(nextAnswer));
             currentQuestionNumber++;
         }
