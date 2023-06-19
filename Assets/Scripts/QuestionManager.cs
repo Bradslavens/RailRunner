@@ -5,7 +5,8 @@ public class QuestionManager : MonoBehaviour
 {
     public AnswerKey answerKey;
     private int currentQuestionNumber = 0;
-
+    public RandomObjectSelector randomObjectSelector;
+    private GameObject correctObject;
     void Start()
     {
         string nextAnswer = answerKey.GetCorrectAnswer(currentQuestionNumber);
@@ -13,6 +14,7 @@ public class QuestionManager : MonoBehaviour
         if (nextAnswer != null)
         {
             Debug.Log("The answer to the next question is: " + nextAnswer);
+            correctObject =  randomObjectSelector.GetRandomObject();
             Debug.Log("the new answer is " + ReplaceLastTwoCharacters(nextAnswer));
             currentQuestionNumber++;
         }
