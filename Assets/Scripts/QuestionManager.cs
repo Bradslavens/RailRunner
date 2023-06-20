@@ -42,31 +42,50 @@ public class QuestionManager : MonoBehaviour
 
         // Take the last character of the original string
         char lastChar = original[original.Length - 1];
-        int nextEven;
+        string nextEven;
         if (Char.IsDigit(lastChar))
         {
-            nextEven = UnityEngine.Random.Range(0, 9);
+            nextEven = UnityEngine.Random.Range(0, 10).ToString();
         }
         else
         {
-            throw new ArgumentException("The last character of the string must be a digit");
+            int randomLetter = UnityEngine.Random.Range(0, 2);
+            
+            if(randomLetter == 0)
+            {
+                nextEven = "A";
+            }
+            else
+            {
+                nextEven= "B";
+            }
         }
 
         // Take the second last character of the original string
         char secondLastChar = original[original.Length - 2];
-        int secondNextEven;
+        string secondNextEven;
+
         if (Char.IsDigit(secondLastChar))
         {
-            secondNextEven = UnityEngine.Random.Range(0, 9);
+            secondNextEven = UnityEngine.Random.Range(0, 10).ToString();
         }
         else
         {
-            throw new ArgumentException("The second last character of the string must be a digit");
+            int randomLetter = UnityEngine.Random.Range(0, 2);
+
+            if (randomLetter == 0)
+            {
+                secondNextEven = "L";
+            }
+            else
+            {
+                secondNextEven = "R";
+            }
         }
 
         // Build the new string by keeping all characters of the original string except the last two, 
         // then adding the new even numbers.
-        string newString = original.Substring(0, original.Length - 2) + secondNextEven.ToString() + nextEven.ToString();
+        string newString = original.Substring(0, original.Length - 2) + secondNextEven + nextEven;
 
         return newString;
     }
