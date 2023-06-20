@@ -42,12 +42,10 @@ public class QuestionManager : MonoBehaviour
 
         // Take the last character of the original string
         char lastChar = original[original.Length - 1];
-        // Calculate the next even number after it (if it's a digit)
-        int nextEven = -1;
+        int nextEven;
         if (Char.IsDigit(lastChar))
         {
-            int lastDigit = (int)Char.GetNumericValue(lastChar);
-            nextEven = lastDigit + (lastDigit % 2 == 0 ? 2 : 1);
+            nextEven = UnityEngine.Random.Range(0, 9);
         }
         else
         {
@@ -56,12 +54,10 @@ public class QuestionManager : MonoBehaviour
 
         // Take the second last character of the original string
         char secondLastChar = original[original.Length - 2];
-        // Calculate the next even number after it (if it's a digit)
-        int secondNextEven = -1;
+        int secondNextEven;
         if (Char.IsDigit(secondLastChar))
         {
-            int secondLastDigit = (int)Char.GetNumericValue(secondLastChar);
-            secondNextEven = secondLastDigit + (secondLastDigit % 2 == 0 ? 2 : 1);
+            secondNextEven = UnityEngine.Random.Range(0, 9);
         }
         else
         {
