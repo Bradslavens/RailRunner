@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,17 @@ public class QuestionManager : MonoBehaviour
     private int currentQuestionNumber = 0;
     public RandomObjectSelector randomObjectSelector;
     private GameObject correctObject;
+    [SerializeField]
+    private List<char> possibleCharacters;
+
+    void Awake()
+    {
+        if (possibleCharacters == null || possibleCharacters.Count == 0)
+        {
+            Debug.LogError("No possible characters have been provided!");
+        }
+    }
+
     void Start()
     {
         string nextAnswer = answerKey.GetCorrectAnswer(currentQuestionNumber);
@@ -23,7 +35,7 @@ public class QuestionManager : MonoBehaviour
             foreach (GameObject obj in randomObjectSelector.gameObjects) {
                 if(obj != correctObject)
                 {
-                    obj.transform.GetChild(1).GetComponent<TextMeshPro>().text = ReplaceLastTwoCharacters(nextAnswer); ;
+                    obj.transform.GetChild(1).GetComponent<TextMeshPro>().text = GenerateRandomString(nextAnswer.Length);
                 }
             
             }
@@ -32,8 +44,26 @@ public class QuestionManager : MonoBehaviour
         }
     }
 
+
+    public string GenerateRandomString(int length)
+    {
+        string result = "";
+        System.Random random = new System.Random();
+
+        for (int i = 0; i < length; i++)
+        {
+            // Select a random character from the list
+            char randomChar = possibleCharacters[random.Next(possibleCharacters.Count)];
+            result += randomChar;
+        }
+
+        return result;
+    }
+
     private string ReplaceLastTwoCharacters(string original)
     {
+        string newString;
+
         // Ensure the original string is long enough
         if (original.Length < 2)
         {
@@ -45,48 +75,36 @@ public class QuestionManager : MonoBehaviour
         string nextEven;
         if (Char.IsDigit(lastChar))
         {
-            nextEven = UnityEngine.Random.Range(0, 10).ToString();
+            nextEven = (2*UnityEngine.Random.Range(0, 5)).ToString();
         }
         else
         {
-            int randomLetter = UnityEngine.Random.Range(0, 2);
-            
-            if(randomLetter == 0)
-            {
-                nextEven = "A";
-            }
-            else
-            {
-                nextEven= "B";
-            }
+            newString = HandleMixedNames(original);
+            return newString;
         }
 
         // Take the second last character of the original string
         char secondLastChar = original[original.Length - 2];
-        string secondNextEven;
+        string secondNextEven = "a";
 
         if (Char.IsDigit(secondLastChar))
         {
-            secondNextEven = UnityEngine.Random.Range(0, 10).ToString();
+            secondNextEven = UnityEngine.Random.Range(0, 5).ToString();
         }
         else
         {
-            int randomLetter = UnityEngine.Random.Range(0, 2);
-
-            if (randomLetter == 0)
-            {
-                secondNextEven = "L";
-            }
-            else
-            {
-                secondNextEven = "R";
-            }
+            newString = HandleMixedNames(original);
         }
 
         // Build the new string by keeping all characters of the original string except the last two, 
         // then adding the new even numbers.
-        string newString = original.Substring(0, original.Length - 2) + secondNextEven + nextEven;
+        newString = original.Substring(0, original.Length - 2) + secondNextEven + nextEven;
 
         return newString;
+    }
+
+    private string HandleMixedNames(string original)
+    {
+        return "HHH";
     }
 }
