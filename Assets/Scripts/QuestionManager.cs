@@ -8,7 +8,7 @@ public class QuestionManager : MonoBehaviour
     public AnswerKey answerKey;
     private int currentQuestionNumber = 0;
     public RandomObjectSelector randomObjectSelector;
-    private GameObject correctObject;
+    public GameObject correctObject;
     [SerializeField]
     private List<char> possibleCharacters;
 
