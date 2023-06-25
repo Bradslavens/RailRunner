@@ -24,11 +24,6 @@ public class QuestionManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        SetQuestions();
-
-    }
 
     private void Update()
     {

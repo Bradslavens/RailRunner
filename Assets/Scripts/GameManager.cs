@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Use the enum to define a variable
-    public QuizState currentQuizState = QuizState.SettingBlocks;
+    public QuizState currentQuizState;
 
 
     public QuestionManager questionManager;
@@ -33,8 +33,8 @@ public class GameManager : MonoBehaviour
         while(true) 
         {
 
-            yield return StartCoroutine(SetQuizState(QuizState.SettingBlocks, 2f));
             yield return StartCoroutine(SetQuizState(QuizState.SettingQuestions, 2f));
+            yield return StartCoroutine(SetQuizState(QuizState.SettingBlocks, 2f));
             yield return StartCoroutine(SetQuizState(QuizState.ReleasingBlocks, 2f));
 
         }
