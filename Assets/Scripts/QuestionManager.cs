@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -13,6 +14,7 @@ public class QuestionManager : MonoBehaviour
     private List<char> possibleCharacters;
     [SerializeField]
     private Vector3 retPos;
+    public GameManager gameManager;
 
     void Awake()
     {
@@ -25,6 +27,17 @@ public class QuestionManager : MonoBehaviour
     void Start()
     {
         SetQuestions();
+
+    }
+
+    private void Update()
+    {
+        if(gameManager.resetQuestions)
+        {
+            Debug.Log("reset questions");
+            SetQuestions();
+            gameManager.resetQuestions = false;
+        }
 
     }
 

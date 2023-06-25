@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public bool CheckAnswers = false;
     public bool setObjects = false;
+    public bool resetQuestions = false;
 
     
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
 
             yield return new WaitForSeconds(3f);  // Wait for one frame
             setObjects = true;
+            resetQuestions = true;
         }
     }
 }
