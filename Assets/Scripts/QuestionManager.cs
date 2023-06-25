@@ -22,30 +22,35 @@ public class QuestionManager : MonoBehaviour
 
     void Start()
     {
+        SetQuestions();
+    }
+
+    private void SetQuestions()
+    {
         string nextAnswer = answerKey.GetCorrectAnswer(currentQuestionNumber);
 
         if (nextAnswer != null)
         {
             Debug.Log("The answer to the next question is: " + nextAnswer);
-            correctObject =  randomObjectSelector.GetRandomObject();
+            correctObject = randomObjectSelector.GetRandomObject();
 
             // assign the next answer to the correct object 
             correctObject.transform.GetChild(1).GetComponent<TextMeshPro>().text = nextAnswer;
             Debug.Log(" bb " + correctObject.name);
-            foreach (GameObject obj in randomObjectSelector.gameObjects) {
-                if(obj != correctObject)
+            foreach (GameObject obj in randomObjectSelector.gameObjects)
+            {
+                if (obj != correctObject)
                 {
                     obj.transform.GetChild(1).GetComponent<TextMeshPro>().text = GenerateRandomString(nextAnswer.Length);
                 }
-            
+
             }
             //Debug.Log("the new answer is " + ReplaceLastTwoCharacters(nextAnswer));
             currentQuestionNumber++;
         }
     }
 
-
-    public string GenerateRandomString(int length)
+        public string GenerateRandomString(int length)
     {
         string result = "";
         System.Random random = new System.Random();
