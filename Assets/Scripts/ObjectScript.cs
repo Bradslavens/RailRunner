@@ -6,17 +6,16 @@ public class ObjectScript : MonoBehaviour
     public float Speed = 10f;
     private GameManager gameManager;
     private QuestionManager questionManager;
-    //private TrackTransport trackTransport;
     private Vector3 retPosition;
-    //[SerializeField]
-    //private float lowerBound = -15;
+    [SerializeField]
+    bool isMoveable = false;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         questionManager = gameManager.GetComponent<QuestionManager>();
-        //trackTransport = GameObject.Find("TrackTransport").GetComponent<TrackTransport>();
+
 
         retPosition = transform.position;
 
@@ -25,17 +24,26 @@ public class ObjectScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.CheckAnswers && gameObject.name != questionManager.correctObject.name)
-        {
-            transform.Translate(new Vector3(0, 0, -Speed * Time.deltaTime));          
-
-        }
-
-        if (gameManager.setObjects)
+        if (gameManager.currentQuizState == GameManager.QuizState.SettingBlocks)
         {
             //Debug.Log(" lower bound " + lowerBound + " z " + transform.position.z);
             //gameManager.CheckAnswers = false;
             transform.position = retPosition;
+            isMoveable = false;
+            //gameManager.setObjects = false;
         }
+        else if (gameManager.currentQuizState == GameManager.QuizState.ReleasingBlocks && (gameObject.name != questionManager.correctObject.name))
+        {
+            isMoveable = true;
+
+        }
+        
+        if (isMoveable)
+        {
+            transform.Translate(new Vector3(0, 0, -Speed * Time.deltaTime));
+
+        }
+
+
     }
 }

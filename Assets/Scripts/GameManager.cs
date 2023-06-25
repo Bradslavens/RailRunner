@@ -1,30 +1,47 @@
+using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public bool CheckAnswers = false;
-    public bool setObjects = false;
-    public bool resetQuestions = false;
+    // Define enum
+    public enum QuizState
+    {
+        SettingBlocks,
+        SettingQuestions,
+        ReleasingBlocks
+    }
+
+    // Use the enum to define a variable
+    public QuizState currentQuizState = QuizState.SettingBlocks;
+
+
+    public QuestionManager questionManager;
 
     
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(CheckAnswerRoutine());
+        questionManager = GetComponent<QuestionManager>();
+        StartCoroutine(Play());
     }
 
-    IEnumerator CheckAnswerRoutine()
+    private IEnumerator Play()
     {
-        while (true)
+        while(true) 
         {
-            yield return new WaitForSeconds(5f);
-            CheckAnswers = true;
-            // Perform your answer checking logic here
 
-            yield return new WaitForSeconds(3f);  // Wait for one frame
-            setObjects = true;
-            resetQuestions = true;
+            yield return StartCoroutine(SetQuizState(QuizState.SettingBlocks, 2f));
+            yield return StartCoroutine(SetQuizState(QuizState.SettingQuestions, 2f));
+            yield return StartCoroutine(SetQuizState(QuizState.ReleasingBlocks, 2f));
+
         }
+    }
+
+    private IEnumerator SetQuizState(QuizState qs, float duration)
+    {
+        currentQuizState = qs;
+        yield return new WaitForSeconds(duration);
     }
 }

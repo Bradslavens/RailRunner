@@ -30,18 +30,18 @@ public class QuestionManager : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        if(gameManager.resetQuestions)
-        {
-            Debug.Log("reset questions");
-            SetQuestions();
-            gameManager.resetQuestions = false;
-        }
+    //private void Update()
+    //{
+    //    if(gameManager.resetQuestions)
+    //    {
+    //        Debug.Log("reset questions");
+    //        SetQuestions();
+    //        gameManager.resetQuestions = false;
+    //    }
 
-    }
+    //}
 
-    private void SetQuestions()
+    public void SetQuestions()
     {
         string nextAnswer = answerKey.GetCorrectAnswer(currentQuestionNumber);
 
@@ -64,6 +64,7 @@ public class QuestionManager : MonoBehaviour
             //Debug.Log("the new answer is " + ReplaceLastTwoCharacters(nextAnswer));
             currentQuestionNumber++;
         }
+
     }
 
         public string GenerateRandomString(int length)

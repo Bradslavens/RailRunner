@@ -10,7 +10,7 @@ public class AnswerKey : MonoBehaviour
     {
         if (questionNumber < 0 || questionNumber >= correctAnswers.Count)
         {
-            Debug.LogError("Question number is out of range!");
+            Debug.LogError("Question number is out of range!" + questionNumber +  "correct answers " + correctAnswers.Count);
             return null;
         }
         else
