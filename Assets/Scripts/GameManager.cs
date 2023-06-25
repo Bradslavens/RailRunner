@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool CheckAnswers = false;
+    public bool setObjects = false;
 
     
     // Start is called before the first frame update
@@ -20,8 +21,8 @@ public class GameManager : MonoBehaviour
             CheckAnswers = true;
             // Perform your answer checking logic here
 
-            //yield return null;  // Wait for one frame
-            //CheckAnswers = false;
+            yield return new WaitForSeconds(3f);  // Wait for one frame
+            setObjects = true;
         }
     }
 }

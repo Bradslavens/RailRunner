@@ -8,8 +8,8 @@ public class ObjectScript : MonoBehaviour
     private QuestionManager questionManager;
     //private TrackTransport trackTransport;
     private Vector3 retPosition;
-    [SerializeField]
-    private float lowerBound = -15;
+    //[SerializeField]
+    //private float lowerBound = -15;
 
     // Start is called before the first frame update
     void Start()
@@ -31,9 +31,9 @@ public class ObjectScript : MonoBehaviour
 
         }
 
-        if (transform.position.z <= lowerBound)
+        if (gameManager.setObjects)
         {
-            Debug.Log(" lower bound " + lowerBound + " z " + transform.position.z);
+            //Debug.Log(" lower bound " + lowerBound + " z " + transform.position.z);
             //gameManager.CheckAnswers = false;
             transform.position = retPosition;
         }

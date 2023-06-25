@@ -11,6 +11,8 @@ public class QuestionManager : MonoBehaviour
     public GameObject correctObject;
     [SerializeField]
     private List<char> possibleCharacters;
+    [SerializeField]
+    private Vector3 retPos;
 
     void Awake()
     {
@@ -23,6 +25,7 @@ public class QuestionManager : MonoBehaviour
     void Start()
     {
         SetQuestions();
+
     }
 
     private void SetQuestions()
