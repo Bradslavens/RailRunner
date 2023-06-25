@@ -30,16 +30,16 @@ public class QuestionManager : MonoBehaviour
 
     }
 
-    //private void Update()
-    //{
-    //    if(gameManager.resetQuestions)
-    //    {
-    //        Debug.Log("reset questions");
-    //        SetQuestions();
-    //        gameManager.resetQuestions = false;
-    //    }
+    private void Update()
+    {
+        if (gameManager.currentQuizState == GameManager.QuizState.SettingQuestions)
+        {
+            Debug.Log("reset questions");
+            SetQuestions();
+            gameManager.currentQuizState = GameManager.QuizState.QuestionsSet;
+        }
 
-    //}
+    }
 
     public void SetQuestions()
     {

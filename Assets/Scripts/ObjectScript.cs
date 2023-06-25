@@ -7,7 +7,6 @@ public class ObjectScript : MonoBehaviour
     private GameManager gameManager;
     private QuestionManager questionManager;
     private Vector3 retPosition;
-    [SerializeField]
     bool isMoveable = false;
 
     // Start is called before the first frame update
@@ -15,7 +14,6 @@ public class ObjectScript : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         questionManager = gameManager.GetComponent<QuestionManager>();
-
 
         retPosition = transform.position;
 
@@ -26,11 +24,8 @@ public class ObjectScript : MonoBehaviour
     {
         if (gameManager.currentQuizState == GameManager.QuizState.SettingBlocks)
         {
-            //Debug.Log(" lower bound " + lowerBound + " z " + transform.position.z);
-            //gameManager.CheckAnswers = false;
             transform.position = retPosition;
             isMoveable = false;
-            //gameManager.setObjects = false;
         }
         else if (gameManager.currentQuizState == GameManager.QuizState.ReleasingBlocks && (gameObject.name != questionManager.correctObject.name))
         {

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     {
         SettingBlocks,
         SettingQuestions,
+        QuestionsSet,
         ReleasingBlocks
     }
 
