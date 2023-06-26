@@ -2778,7 +2778,8 @@ MonoBehaviour:
   answerKey: {fileID: 278470074}
   randomObjectSelector: {fileID: 278470076}
   correctObject: {fileID: 0}
-  possibleCharacters: 30003100320033003400350036003700380039005200410042004c005300
+  possibleAlphaCharacters: 520041004c004200
+  possibleNumericCharacters: 3000310032003300340035003600370038003900
   retPos: {x: 0, y: 0, z: 0}
   gameManager: {fileID: 278470077}
 --- !u!114 &278470076
@@ -2810,9 +2811,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5cfcc8ef0e8234cb7ac2e2f403bafd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckAnswers: 0
-  setObjects: 0
-  resetQuestions: 0
+  currentQuizState: 0
+  questionManager: {fileID: 0}
 --- !u!1 &283329308
 GameObject:
   m_ObjectHideFlags: 0
