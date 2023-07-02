@@ -52,15 +52,15 @@ public class QuestionManager : MonoBehaviour
         {
             Debug.Log("The answer to the next question is: " + nextAnswer);
             correctObject = randomObjectSelector.GetRandomObject();
+            //Debug.Log("co " + correctObject.transform.GetChild;
 
             // assign the next answer to the correct object 
-            correctObject.transform.GetChild(1).GetComponent<TextMeshPro>().text = nextAnswer;
-            Debug.Log(" bb " + correctObject.name);
+            correctObject.transform.GetChild(0).GetComponent<TextMeshPro>().text = nextAnswer;  // set child number the same below
             foreach (GameObject obj in randomObjectSelector.gameObjects)
             {
                 if (obj != correctObject)
                 {
-                    obj.transform.GetChild(1).GetComponent<TextMeshPro>().text = GenerateRandomString(nextAnswer);
+                    obj.transform.GetChild(0).GetComponent<TextMeshPro>().text = GenerateRandomString(nextAnswer);
                 }
 
             }
