@@ -999,7 +999,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193125731}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -18.400002}
+  m_LocalPosition: {x: 0, y: 0, z: 122.700005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3069,6 +3069,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 45dc2dc68c5657046b9526bfcf97bfae,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 45dc2dc68c5657046b9526bfcf97bfae,
         type: 3}
       propertyPath: m_Name
@@ -4040,6 +4045,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 966664837}
+  - component: {fileID: 966664838}
   m_Layer: 3
   m_Name: Plants
   m_TagString: Untagged
@@ -4055,7 +4061,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 966664836}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -38.4}
+  m_LocalPosition: {x: 0, y: 0, z: 102.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4075,6 +4081,22 @@ Transform:
   m_Father: {fileID: 986647844}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &966664838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966664836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5bf97de97539ee41989f4d8b4f9ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  trackTransport: {fileID: 1472264809}
+  enableRendererPosition: 20
+  disableRendererPosition: -20
 --- !u!1 &986647843
 GameObject:
   m_ObjectHideFlags: 0
@@ -4099,7 +4121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986647843}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 38.4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4446,7 +4468,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142232674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.49, y: 0.44, z: 18.8}
+  m_LocalPosition: {x: 0, y: 0.04, z: 71.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4469,12 +4491,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bf97de97539ee41989f4d8b4f9ab21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerTrigger: S154
   speed: 0
   trackTransport: {fileID: 1472264809}
-  questionManager: {fileID: 278470075}
-  enableRendererPosition: -20
-  disableRendererPosition: -60
+  enableRendererPosition: 20
+  disableRendererPosition: -20
 --- !u!1001 &1178785641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5205,7 +5225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479541475}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.49, y: 0, z: 7.47}
+  m_LocalPosition: {x: -6.49, y: 0, z: 148.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5225,10 +5245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bf97de97539ee41989f4d8b4f9ab21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerTrigger: S226
   speed: 0
   trackTransport: {fileID: 1472264809}
-  questionManager: {fileID: 278470075}
   enableRendererPosition: 5
   disableRendererPosition: 0
 --- !u!1001 &1564969150
@@ -5908,7 +5926,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920760691}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.49, y: 0, z: 7.47}
+  m_LocalPosition: {x: -6.49, y: 0, z: 148.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5928,10 +5946,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bf97de97539ee41989f4d8b4f9ab21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerTrigger: S16RA
   speed: 0
   trackTransport: {fileID: 1472264809}
-  questionManager: {fileID: 278470075}
   enableRendererPosition: 5
   disableRendererPosition: 0
 --- !u!1001 &1930418766
