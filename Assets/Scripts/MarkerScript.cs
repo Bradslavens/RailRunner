@@ -34,7 +34,7 @@ public class MarkerScript : MonoBehaviour
     void Update()
     {
         // If marker is moveable, then check if current answer equals marker trigger string
-        if (isMoveable && questionManager.correctObject.transform.GetChild(1).GetComponent<TextMeshPro>().text == markerTrigger)
+        if (isMoveable && questionManager.correctObject.transform.GetChild(0).GetComponent<TextMeshPro>().text == markerTrigger)
         {
             // Move this marker backwards along the Z axis at a given speed
             transform.Translate(0, 0, -speed * Time.deltaTime);
