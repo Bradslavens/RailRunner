@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     private bool isMoveable = false;
 
+    public GameObject camOverhead;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +60,8 @@ public class GameManager : MonoBehaviour
         }
         else if (currentQuizState == QuizState.ReleasingBlocks)
         {
+            questionManager.correctObject.SetActive(false);
+            camOverhead.SetActive(false);
             isMoveable = true;
 
         }
