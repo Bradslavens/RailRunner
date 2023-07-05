@@ -53,7 +53,8 @@ public class GameManager : MonoBehaviour
 
         if (currentQuizState == QuizState.SettingBlocks)
         {
-            transform.position = retPosition;
+            Debug.Log("setting blocks1");
+            questionBlocks.position = retPosition;
             isMoveable = false;
         }
         else if (currentQuizState == QuizState.ReleasingBlocks)
