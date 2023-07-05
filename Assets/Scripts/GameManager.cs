@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     public float bottomPosition = 20f;
     public Transform questionBlocks;
 
-    private bool isMoveable;
+    private bool isMoveable = false;
 
 
     // Start is called before the first frame update
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
        
         if (isMoveable)
         {
-            transform.Translate(new Vector3(0, 0, -trackSpeed * Time.deltaTime));
+            questionBlocks.Translate(new Vector3(0, 0, -trackSpeed * Time.deltaTime));
 
         }
     }
