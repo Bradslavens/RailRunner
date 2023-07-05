@@ -9,7 +9,7 @@ public class MarkerScript : MonoBehaviour
     [SerializeField]
     private float speed;
 
-    public TrackTransport trackTransport;
+    public GameManager trackTransport;
 
     public float enableRendererPosition = 5f;
     public float disableRendererPosition = 0f;
@@ -18,7 +18,7 @@ public class MarkerScript : MonoBehaviour
 
     private void Start()
     {
-        speed = trackTransport.speed;
+        speed = trackTransport.trackSpeed;
 
         // Disable all child mesh renderers at start, including inactive children
         childMeshRenderers = GetComponentsInChildren<MeshRenderer>(true);

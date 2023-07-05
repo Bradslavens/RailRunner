@@ -9,6 +9,9 @@ public class ObjectScript : MonoBehaviour
     private Vector3 retPosition;
     bool isMoveable = false;
 
+    public float topPosition = 0f;
+    public float bottomPosition = 20f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +35,23 @@ public class ObjectScript : MonoBehaviour
             isMoveable = true;
 
         }
-        
+        else if (gameManager.currentQuizState == GameManager.QuizState.ReleasingBlocks && (gameObject.name == questionManager.correctObject.name))
+        {
+            Debug.Log("wwww");
+            foreach (Transform child in gameObject.transform)
+            {
+                if (child.position.z > bottomPosition && child.position.z < topPosition)
+                {
+                    MeshRenderer meshRenderer = child.GetComponent<MeshRenderer>();
+                    if (meshRenderer != null)
+                    {
+                        meshRenderer.enabled = false;
+                    }
+                }
+            }
+        }
+
+
         if (isMoveable)
         {
             transform.Translate(new Vector3(0, 0, -Speed * Time.deltaTime));
