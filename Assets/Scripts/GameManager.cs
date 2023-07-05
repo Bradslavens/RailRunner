@@ -21,15 +21,22 @@ public class GameManager : MonoBehaviour
     public float trackSpeed;
     public float lowerBound;
 
-
     public QuestionManager questionManager;
 
-    
+    private Vector3 retPosition;
+    public float topPosition = 0f;
+    public float bottomPosition = 20f;
+    public Transform questionBlocks;
+
+    private bool isMoveable;
+
+
     // Start is called before the first frame update
     void Start()
     {
         questionManager = GetComponent<QuestionManager>();
         StartCoroutine(Play());
+        retPosition = questionBlocks.position;
     }
 
     void Update()
@@ -42,6 +49,23 @@ public class GameManager : MonoBehaviour
         {
             Vector3 newPosition = new Vector3(trackTransport.position.x, trackTransport.position.y, 0f);
             trackTransport.position = newPosition;
+        }
+
+        if (currentQuizState == QuizState.SettingBlocks)
+        {
+            transform.position = retPosition;
+            isMoveable = false;
+        }
+        else if (currentQuizState == QuizState.ReleasingBlocks)
+        {
+            isMoveable = true;
+
+        }
+       
+        if (isMoveable)
+        {
+            transform.Translate(new Vector3(0, 0, -trackSpeed * Time.deltaTime));
+
         }
     }
 

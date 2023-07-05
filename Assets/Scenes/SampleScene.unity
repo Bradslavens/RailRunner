@@ -1255,6 +1255,8 @@ MonoBehaviour:
   trackSpeed: 10
   lowerBound: -20
   questionManager: {fileID: 278470075}
+  topPosition: 0
+  bottomPosition: 20
 --- !u!1001 &303042424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4554,7 +4556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1691495346}
   m_Layer: 0
-  m_Name: Obstacles
+  m_Name: QuestionBlocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
