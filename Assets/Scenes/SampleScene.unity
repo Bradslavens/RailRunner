@@ -1257,6 +1257,7 @@ MonoBehaviour:
   questionManager: {fileID: 278470075}
   topPosition: 0
   bottomPosition: 20
+  questionBlocks: {fileID: 0}
 --- !u!1001 &303042424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1695,7 +1696,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1.49
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2502661838073641684, guid: a6d06a9427048d54c95c13c630f8ba6c, type: 3}
     m_RemovedGameObjects:
     - {fileID: 9142440194612391958, guid: a6d06a9427048d54c95c13c630f8ba6c, type: 3}
     m_AddedGameObjects:
@@ -2837,7 +2839,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1.49
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2502661838073641684, guid: a6d06a9427048d54c95c13c630f8ba6c, type: 3}
     m_RemovedGameObjects:
     - {fileID: 9142440194612391958, guid: a6d06a9427048d54c95c13c630f8ba6c, type: 3}
     m_AddedGameObjects:
@@ -4516,7 +4519,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1.49
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2502661838073641684, guid: a6d06a9427048d54c95c13c630f8ba6c, type: 3}
     m_RemovedGameObjects:
     - {fileID: 9142440194612391958, guid: a6d06a9427048d54c95c13c630f8ba6c, type: 3}
     m_AddedGameObjects:
@@ -5631,7 +5635,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1.49
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2502661838073641684, guid: a6d06a9427048d54c95c13c630f8ba6c, type: 3}
     m_RemovedGameObjects:
     - {fileID: 9142440194612391958, guid: a6d06a9427048d54c95c13c630f8ba6c, type: 3}
     m_AddedGameObjects:
