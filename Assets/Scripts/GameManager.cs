@@ -54,7 +54,9 @@ public class GameManager : MonoBehaviour
 
         if (currentQuizState == QuizState.SettingBlocks)
         {
+            questionManager.correctObject.SetActive(true);
             Debug.Log("setting blocks1");
+            camOverhead.SetActive(true);
             questionBlocks.position = retPosition;
             isMoveable = false;
         }
