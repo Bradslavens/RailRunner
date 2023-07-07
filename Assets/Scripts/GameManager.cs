@@ -5,17 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Define enum
-    public enum QuizState
-    {
-        SettingBlocks,
-        SettingQuestions,
-        QuestionsSet,
-        ReleasingBlocks
-    }
-
-    // Use the enum to define a variable
-    public QuizState currentQuizState;
+ 
     public Transform trackTransport;
 
     public float trackSpeed;
@@ -29,8 +19,6 @@ public class GameManager : MonoBehaviour
     public Transform questionBlocks;
 
     private bool isMoveable = false;
-
-    public GameObject camOverhead;
 
     // Start is called before the first frame update
     void Start()
@@ -52,22 +40,6 @@ public class GameManager : MonoBehaviour
             trackTransport.position = newPosition;
         }
 
-        if (currentQuizState == QuizState.SettingBlocks)
-        {
-            questionManager.correctObject.SetActive(true);
-            Debug.Log("setting blocks1");
-            camOverhead.SetActive(true);
-            questionBlocks.position = retPosition;
-            isMoveable = false;
-        }
-        else if (currentQuizState == QuizState.ReleasingBlocks)
-        {
-            questionManager.correctObject.SetActive(false);
-            camOverhead.SetActive(false);
-            isMoveable = true;
-
-        }
-       
         if (isMoveable)
         {
             questionBlocks.Translate(new Vector3(0, 0, -trackSpeed * Time.deltaTime));
@@ -77,19 +49,26 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Play()
     {
-        while(true) 
+        while (true)
         {
 
-            yield return StartCoroutine(SetQuizState(QuizState.SettingQuestions, 2f));
-            yield return StartCoroutine(SetQuizState(QuizState.SettingBlocks, 2f));
-            yield return StartCoroutine(SetQuizState(QuizState.ReleasingBlocks, 2f));
+            yield return StartCoroutine(questionManager.SetQuestions());
+            yield return StartCoroutine(SetBlocks());
+            yield return StartCoroutine(ReleaseBlocks());
 
         }
     }
 
-    private IEnumerator SetQuizState(QuizState qs, float duration)
+    private IEnumerator SetBlocks()
     {
-        currentQuizState = qs;
-        yield return new WaitForSeconds(duration);
+        questionBlocks.position = retPosition;
+        yield return new WaitForSeconds(3);
     }
+
+    private IEnumerator ReleaseBlocks()
+    {
+        isMoveable = true;
+        yield return new WaitForSeconds(3);
+    }
+
 }

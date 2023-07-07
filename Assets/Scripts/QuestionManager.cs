@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -33,18 +34,8 @@ public class QuestionManager : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        if (gameManager.currentQuizState == GameManager.QuizState.SettingQuestions)
-        {
-            Debug.Log("reset questions");
-            SetQuestions();
-            gameManager.currentQuizState = GameManager.QuizState.QuestionsSet;
-        }
 
-    }
-
-    public void SetQuestions()
+    public IEnumerator SetQuestions()
     {
         string nextAnswer = answerKey.GetCorrectAnswer(currentQuestionNumber);
 
@@ -67,6 +58,7 @@ public class QuestionManager : MonoBehaviour
             //Debug.Log("the new answer is " + ReplaceLastTwoCharacters(nextAnswer));
             currentQuestionNumber++;
         }
+        yield return null;
 
     }
 
