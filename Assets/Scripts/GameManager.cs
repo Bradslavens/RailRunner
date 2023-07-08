@@ -61,12 +61,15 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator SetBlocks()
     {
+        isMoveable = false;
         questionBlocks.position = retPosition;
+        Debug.Log("Setting Blocks");
         yield return new WaitForSeconds(3);
     }
 
     private IEnumerator ReleaseBlocks()
     {
+        Debug.Log("IsMoveable");
         isMoveable = true;
         yield return new WaitForSeconds(3);
     }

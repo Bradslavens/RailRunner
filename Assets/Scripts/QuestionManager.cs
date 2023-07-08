@@ -37,13 +37,14 @@ public class QuestionManager : MonoBehaviour
 
     public IEnumerator SetQuestions()
     {
+        Debug.Log("Setting Questions");
+
         string nextAnswer = answerKey.GetCorrectAnswer(currentQuestionNumber);
 
         if (nextAnswer != null)
         {
             Debug.Log("The answer to the next question is: " + nextAnswer);
             correctObject = randomObjectSelector.GetRandomObject();
-            //Debug.Log("co " + correctObject.transform.GetChild;
 
             // assign the next answer to the correct object 
             correctObject.transform.GetChild(0).GetComponent<TextMeshPro>().text = nextAnswer;  // set child number the same below
