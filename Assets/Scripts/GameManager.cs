@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public float topPosition = 0f;
     public float bottomPosition = 20f;
     public Transform questionBlocks;
+    private GameObject currentObject;
 
     private bool isMoveable = false;
 
@@ -69,9 +70,13 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator ReleaseBlocks()
     {
+        currentObject = questionManager.correctObject;
+        currentObject.SetActive(false);
         Debug.Log("IsMoveable");
         isMoveable = true;
         yield return new WaitForSeconds(3);
+
+        currentObject.SetActive(true);
     }
 
 }
