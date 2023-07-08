@@ -1250,7 +1250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5cfcc8ef0e8234cb7ac2e2f403bafd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentQuizState: 0
   trackTransport: {fileID: 1472264808}
   trackSpeed: 10
   lowerBound: -20
@@ -1258,7 +1257,6 @@ MonoBehaviour:
   topPosition: 0
   bottomPosition: 20
   questionBlocks: {fileID: 1691495346}
-  camOverhead: {fileID: 1903387545}
 --- !u!1001 &303042424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5443,7 +5441,7 @@ MonoBehaviour:
   - {fileID: 1946030296}
   - {fileID: 1114896282}
   - {fileID: 319295273}
-  speed: 5
+  speed: 0.1
 --- !u!54 &2142870432
 Rigidbody:
   m_ObjectHideFlags: 0

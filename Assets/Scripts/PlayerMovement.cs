@@ -19,13 +19,11 @@ public class PlayerMovement : MonoBehaviour
         playerAction = new PlayerAction();
         playerAction.Movement.MoveLeft.performed += ctx => MoveLeft();
         playerAction.Movement.MoveRight.performed += ctx => MoveRight();
-
     }
 
     private void Start()
     {
-        Vector3 npos = new Vector3(targets[currentTargetIndex].position.x, transform.position.y, transform.position.z);
-        transform.position = npos;
+        MoveToPosition(targets[currentTargetIndex].position.x);
     }
 
 
@@ -34,12 +32,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("move1 left");
 
-        if(currentTargetIndex > 0)
+        if (currentTargetIndex > 0)
         {
             currentTargetIndex--;
             Debug.Log(currentTargetIndex);
-            Vector3 npos = new Vector3(targets[currentTargetIndex].position.x, transform.position.y, transform.position.z);
-            transform.position = npos;
+            MoveToPosition(targets[currentTargetIndex].position.x);
         }
     }
 
@@ -52,8 +49,7 @@ public class PlayerMovement : MonoBehaviour
         {
             currentTargetIndex++;
             Debug.Log(currentTargetIndex);
-            Vector3 npos = new Vector3(targets[currentTargetIndex].position.x, transform.position.y, transform.position.z);
-            transform.position = npos;
+            MoveToPosition(targets[currentTargetIndex].position.x);
         }
     }
 
@@ -65,5 +61,28 @@ public class PlayerMovement : MonoBehaviour
     private void OnDisable()
     {
         playerAction.Movement.Disable();
+    }
+
+    // Coroutine to move the object
+    IEnumerator MoveOverSeconds(float xPosition)
+    {
+        Vector3 start = transform.position;
+        Vector3 end = new Vector3(xPosition, transform.position.y, transform.position.z);
+        float elapsedTime = 0;
+
+        while (elapsedTime < speed)
+        {
+            transform.position = Vector3.Lerp(start, end, (elapsedTime / speed));
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        transform.position = end;
+    }
+
+    // Start the Coroutine to move the player to the position
+    private void MoveToPosition(float xPosition)
+    {
+        StartCoroutine(MoveOverSeconds(xPosition));
     }
 }
