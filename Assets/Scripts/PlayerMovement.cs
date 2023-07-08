@@ -85,4 +85,9 @@ public class PlayerMovement : MonoBehaviour
     {
         StartCoroutine(MoveOverSeconds(xPosition));
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+    }
 }
