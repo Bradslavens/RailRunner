@@ -1272,6 +1272,7 @@ MonoBehaviour:
   topPosition: 0
   bottomPosition: 20
   questionBlocks: {fileID: 1691495346}
+  lockPlayer: 0
 --- !u!1001 &303042424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6003,6 +6004,7 @@ MonoBehaviour:
   - {fileID: 1114896282}
   - {fileID: 319295273}
   speed: 0.1
+  gameManager: {fileID: 278470077}
 --- !u!54 &2142870432
 Rigidbody:
   m_ObjectHideFlags: 0

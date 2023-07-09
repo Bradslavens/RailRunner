@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerAction playerAction;
 
+    public GameManager gameManager;
+
     void Awake()
     {
         // Initialize your input actions
@@ -30,26 +32,32 @@ public class PlayerMovement : MonoBehaviour
     // You can call this function when you click your left button
     public void MoveLeft()
     {
-        Debug.Log("move1 left");
-
-        if (currentTargetIndex > 0)
+        if(gameManager.lockPlayer == false)
         {
-            currentTargetIndex--;
-            Debug.Log(currentTargetIndex);
-            MoveToPosition(targets[currentTargetIndex].position.x);
+            Debug.Log("move1 left");
+
+            if (currentTargetIndex > 0)
+            {
+                currentTargetIndex--;
+                Debug.Log(currentTargetIndex);
+                MoveToPosition(targets[currentTargetIndex].position.x);
+            }
         }
     }
 
     // You can call this function when you click your right button
     public void MoveRight()
     {
-        Debug.Log("move right");
-
-        if (currentTargetIndex < targets.Count - 1) // check if there's a target to the right
+        if(gameManager.lockPlayer == false)
         {
-            currentTargetIndex++;
-            Debug.Log(currentTargetIndex);
-            MoveToPosition(targets[currentTargetIndex].position.x);
+            Debug.Log("move right");
+
+            if (currentTargetIndex < targets.Count - 1) // check if there's a target to the right
+            {
+                currentTargetIndex++;
+                Debug.Log(currentTargetIndex);
+                MoveToPosition(targets[currentTargetIndex].position.x);
+            }
         }
     }
 
